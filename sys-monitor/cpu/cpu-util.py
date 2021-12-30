@@ -17,6 +17,7 @@ def plot(cpu_load):
     plt.plot(cpu_load, marker='o',
              label=f'MAX: {round(max(cpu_load),1)} %\nAVG: {round(sum(cpu_load)/len(cpu_load),1)} %')
     plt.legend()
+    plt.ylim([0, 100])
 
     file_name = f'./snaps/{sys.argv[1]}-mem.png' if len(
         sys.argv) > 1 else f'./snaps/{os.getpid()}-mem.png'

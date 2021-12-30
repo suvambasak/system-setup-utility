@@ -19,7 +19,7 @@ try:
             mem.append((total_mem*m)/104857600)
         time.sleep(1)
 
-except Exception as e:
+except KeyboardInterrupt as e:
     print('Stopping..')
 
 finally:
