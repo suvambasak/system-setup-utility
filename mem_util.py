@@ -1,6 +1,7 @@
 import psutil
 import time
 import os
+import sys
 import matplotlib.pyplot as plt
 
 mem = []
@@ -28,4 +29,10 @@ finally:
     plt.plot(mem, marker='o',
              label=f'MAX: {round(max(mem),1)} MB\nAVG: {round(sum(mem)/len(mem),1)} MB')
     plt.legend()
-    plt.savefig(str(os.getpid())+'-mem.png', dpi=1000)
+
+    if len(sys.argv) > 1:
+        file_name = f'{sys.argv[1]}-mem.png'
+    else:
+        file_name = f'{os.getpid()}-mem.png'
+
+    plt.savefig(file_name, dpi=1000)
