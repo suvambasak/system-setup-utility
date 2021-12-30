@@ -30,9 +30,7 @@ finally:
              label=f'MAX: {round(max(mem),1)} MB\nAVG: {round(sum(mem)/len(mem),1)} MB')
     plt.legend()
 
-    if len(sys.argv) > 1:
-        file_name = f'{sys.argv[1]}-mem.png'
-    else:
-        file_name = f'{os.getpid()}-mem.png'
+    file_name = f'./snaps/{sys.argv[1]}-mem.png' if len(
+        sys.argv) > 1 else f'./snaps/{os.getpid()}-mem.png'
 
     plt.savefig(file_name, dpi=1000)
