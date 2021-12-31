@@ -19,8 +19,8 @@ def plot(cpu_load):
     plt.legend()
     plt.ylim([0, 100])
 
-    file_name = f'./snaps/{sys.argv[1]}-mem.png' if len(
-        sys.argv) > 1 else f'./snaps/{os.getpid()}-mem.png'
+    file_name = f'./snaps/{sys.argv[1]}-cpu.png' if len(
+        sys.argv) > 1 else f'./snaps/{os.getpid()}-cpu.png'
 
     plt.savefig(file_name, dpi=1000)
 

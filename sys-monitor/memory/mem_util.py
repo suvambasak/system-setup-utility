@@ -26,8 +26,8 @@ finally:
     plt.title("Memory Utilization")
     plt.xlabel("Time(s)")
     plt.ylabel("Memory(MB)")
-    plt.plot(mem, marker='o',
-             label=f'MAX: {round(max(mem),1)} MB\nAVG: {round(sum(mem)/len(mem),1)} MB')
+    plt.plot(
+        mem, label=f'MAX: {round(max(mem),1)} MB\nAVG: {round(sum(mem)/len(mem),1)} MB')
     plt.legend()
 
     file_name = f'./snaps/{sys.argv[1]}-mem.png' if len(
