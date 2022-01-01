@@ -58,14 +58,19 @@ def generate_result():
 
 file_id = 0
 try:
-    print('Started...')
+    if not os.path.exists('./data'):
+        os.mkdir('./data')
+
+    print('\nStarted...')
     while True:
         file_name = f'./data/{file_id}'
         os.system(f'top -bn1 > {file_name}')
         file_id += 1
         time.sleep(1)
 except KeyboardInterrupt as e:
-    print('Stoping..')
+    print('\nStoping..')
 finally:
+    print('\nProcessing..')
     generate_result()
     cleanup()
+    print('\nDone.')

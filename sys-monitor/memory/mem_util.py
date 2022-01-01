@@ -8,7 +8,7 @@ mem = []
 total_mem = psutil.virtual_memory().total
 
 try:
-    print('Started...')
+    print('\nStarted...')
     while True:
         m = 0
         for proc in psutil.process_iter(['pid', 'name', 'username', 'memory_percent']):
@@ -20,9 +20,10 @@ try:
         time.sleep(1)
 
 except KeyboardInterrupt as e:
-    print('Stopping..')
+    print('\nStopping...')
 
 finally:
+    print('\nProcessing...')
     plt.title("Memory Utilization")
     plt.xlabel("Time(s)")
     plt.ylabel("Memory(MB)")
@@ -34,3 +35,5 @@ finally:
         sys.argv) > 1 else f'./snaps/{os.getpid()}-mem.png'
 
     plt.savefig(file_name, dpi=1000)
+
+    print('\nDone.')
