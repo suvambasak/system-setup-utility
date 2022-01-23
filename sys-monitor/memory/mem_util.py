@@ -2,6 +2,7 @@ import psutil
 import time
 import os
 import sys
+import json
 import matplotlib.pyplot as plt
 
 # Memory use of each second
@@ -39,10 +40,19 @@ finally:
     plt.legend()
 
     # File name is process ID unless the name given from cmd line arg
-    file_name = f'./snaps/{sys.argv[1]}-mem.png' if len(
+    graph_file_name = f'./snaps/{sys.argv[1]}-mem.png' if len(
         sys.argv) > 1 else f'./snaps/{os.getpid()}-mem.png'
+    json_file_name = f'./json/{sys.argv[1]}-mem.json' if len(
+        sys.argv) > 1 else f'./json/{os.getpid()}-mem.json'
 
-    plt.savefig(file_name, dpi=1000)
-    print(f'\nSaved: {file_name}')
+    plt.savefig(graph_file_name, dpi=1000)
+    print(f'\nImage Saved: {graph_file_name}')
+
+    # Saving data as JSON file
+    data = dict()
+    data['mem'] = mem
+    with open(json_file_name, 'w') as json_file:
+        json_file.write(json.dumps(data, indent=1))
+    print(f'\nJSON Saved: {json_file_name}')
 
     print('\nDone.')
