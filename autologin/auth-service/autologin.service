@@ -1,0 +1,11 @@
+[Unit]
+Description=Demo service
+After=multi-user.target
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/python3 /home/suvam/.autologin/authenticator.py
+
+[Install]
+WantedBy=multi-user.target
