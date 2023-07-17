@@ -10,4 +10,7 @@ System administrative utility tools and convenience script.
 - [Firewall login](autologin)
     - [Automate browser](autologin/auth-service)
     - [Start service](autologin/auth-service)
-- []()
+- [System setup handbook](system-setup)
+    - [Secure Shell](system-setup/secure-shell.md)
+    - [Network File System](system-setup/network-file-system.md)
+    - [Crontab](system-setup/Crontab.md)
