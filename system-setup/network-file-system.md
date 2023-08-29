@@ -44,3 +44,7 @@ showmount -e `SERVER_IP`
 ```bash
 mount -t nfs `SERVER_IP`:/media/suvam/Storage/NFS/satnet-data /home/suvam/NFS
 ```
+- Umount volume
+```bash
+umount -f -l /home/suvam/NFS
+```
