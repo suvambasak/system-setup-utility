@@ -5,7 +5,7 @@ System administrative utility tools and convenience script.
 - [System Monitoring](system-monitoring-scripts)
     - [CPU usage by xOpera](system-monitoring-scripts/cpu)
     - [Memory usage by xOpera](system-monitoring-scripts/memory)
-- [Shell Scrips](shell-scripts)
+- [Shell Scrips & utility](shell-scripts)
 - [Devices](USB-devide-detector)
 - [Firewall login](autologin)
     - [Automate browser](autologin/auth-service)
