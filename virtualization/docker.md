@@ -128,6 +128,11 @@ Port Forwarding or Port Mapping
 docker container run -d -p 3600:80 --name test1 nginx
 ```
 
+Priviledged container
+```bash
+docker container run --privileged IMAGE_NAME
+```
+
 ### Export and Import
 ```bash
 docker container export CONTAINER_ID > my_ubuntu.tar
@@ -319,4 +324,129 @@ docker-compose up -d
 curl localhost:8080
 curl localhost:8081
 docker-compose down
+```
+# Docker Swarm
+
+## Setup
+Manager node
+```bash
+docker swarm init
+```
+```bash
+docker swarm init --advertise-addr 172.27.28.217
+```
+Get the joining token later
+```bash
+docker swarm join-token worker
+```
+```bash
+docker swarm join-token manager
+```
+Add worker nodes
+```bash
+ docker swarm join --token SWMTKN-1-0jyybxslust2j468pg3r8f0lst0qwtpy8xjn2uwkvxg6qmfz95-4sufwllpjcbzn184scnd1dc0n 172.27.28.217:2377
+```
+Only on the manager node
+```bash
+docker node ls
+```
+
+Worker node leave (Now the info will show swarm inactive. But Manager is still not aware that the worker left)
+```bash
+docker swarm leave
+```
+Manager node remove worker nodes
+```bash
+docker node rm worker2
+```
+```bash
+docker node rm -f worker1
+```
+Promote and Demote
+```bash
+docker node promote worker1 worker2
+```
+```bash
+docker node demote worker1 worker2
+```
+
+### Node Availability
+```bash
+docker node ls
+```
+- Active: Node is ready to take a job from the manager
+- Pause: All tasks running will be kept running but not ready to take a new job
+- Drain: If need to shift all running containers to other nodes
+
+```bash
+docker node update --availability=pause worker2
+```
+```bash
+docker node update --availability=drain worker2
+```
+
+## Docker services
+Only works on the Manager node
+```bash
+docker container ls
+```
+```bash
+docker service ls
+```
+Creating service
+```bash
+docker service create -d alpine ping 8.8.8.8
+```
+```bash
+docker service inspect SERVICE_ID
+```
+```bash
+docker service logs SERVICE_ID
+```
+Creating service with multiple replicas
+```bash
+docker service create -d --replicas 4 apline ping 127.0.0.1
+```
+Scalling
+```bash
+docker service scale SERVICE_ID=10 SERVICE_ID=3
+```
+Port mapping 
+```bash
+docker service create -d -p 8090:80 nginx
+```
+
+Create one container for each node in the cluster
+```bash
+docker service create --mode=global alpine ping 8.8.8.8
+```
+
+Create containers only for managers
+```bash
+docker service create --replicas=3 --constraint=”node.role==manager” alpine ping 8.8.8.8
+```
+Create containers only on the worker node.
+```bash
+docker service create --replicas=3 --constraint=”node.role==worker” alpine ping 8.8.8.8
+```
+Adding labels
+```bash
+docker node update --label-add=”sdd=true” worker1
+```
+```bash
+docker service create --replicas=3 --constraint=”node.labels.ssd==true” alpine ping 8.8.8.8
+```
+
+## Swarm Networking
+```bash
+docker network create -d overlay test_nw
+```
+```bash
+docker service create -d --replicas 3 --network test_nw IMAGE_NAME
+```
+
+## Docker Stack
+
+```bash
+docker stack deploy --compose-file docker-compose.yaml MYNAME
 ```
