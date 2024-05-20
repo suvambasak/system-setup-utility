@@ -19,3 +19,5 @@ System administrative utility tools and convenience script.
 - [Virtualization](virtualization/)
     - [QEMU/KVM](virtualization/QEMU_KVM.md)
     - [Docker](virtualization/docker.md)
+- [Install tools](tools-install)
+    - [Savi](tools-install/savi.md)
