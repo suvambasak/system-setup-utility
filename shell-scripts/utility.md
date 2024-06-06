@@ -21,3 +21,8 @@ df -h
 ```bash
 du -hs Projects/
 ```
+
+# How to upgrade device firmware from the command line
+```bash
+fwupdmgr update
+```
