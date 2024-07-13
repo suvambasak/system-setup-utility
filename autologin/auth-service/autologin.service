@@ -1,5 +1,5 @@
 [Unit]
-Description=Demo service
+Description=Firewall captive portal login service
 After=multi-user.target
 
 [Service]

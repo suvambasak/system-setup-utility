@@ -17,7 +17,7 @@ from typing import Tuple, Union
 
 # URL constants.
 ONE_ONE_ONE_ONE = 'http://1.1.1.1/'
-ONE_ONE_ONE_ONE_HTTPS = 'https://1.1.1.1/'
+ONE_ONE_ONE_ONE_HTTPS = 'https://one.one.one.one/'
 
 # Using globals here help bypass passing a few arguments.
 logged_in = False
@@ -28,7 +28,8 @@ def interrupt_handler(sig, frame):
     """SIGINT handler. Logout user if they are logged in."""
     if logged_in:
         try:
-            response = requests.get(logout_url, headers={'User-Agent': 'Mozilla/5.0'})
+            response = requests.get(logout_url, headers={
+                                    'User-Agent': 'Mozilla/5.0'})
         except:
             logging.error(f'Error in opening url: {logout_url}.')
 
@@ -77,9 +78,11 @@ def state_check() -> Tuple[bool, requests.Response]:
     # Keep trying to reach http://1.1.1.1 until status code is 200.
     while True:
         try:
-            response = requests.get(ONE_ONE_ONE_ONE, headers={'User-Agent': 'Mozilla/5.0'})
+            response = requests.get(ONE_ONE_ONE_ONE, headers={
+                                    'User-Agent': 'Mozilla/5.0'})
         except requests.exceptions.RequestException:
-            logging.error(f'Error in opening url: {ONE_ONE_ONE_ONE}. Retrying ...')
+            logging.error(
+                f'Error in opening url: {ONE_ONE_ONE_ONE}. Retrying ...')
             continue
 
         if response.status_code == 200:
@@ -120,7 +123,8 @@ def login(username: str, password: str, response: requests.Response) -> Tuple[bo
         logging.error('Could not find base url via regex match. Exiting.')
         exit()
     url = url[0]
-    magic: str = re.search('(name="magic" value=")([a-zA-Z0-9]+)(")', response.text)
+    magic: str = re.search(
+        '(name="magic" value=")([a-zA-Z0-9]+)(")', response.text)
     if magic is None:
         logging.error('Could not find magic value via regex match. Exiting.')
         exit()
@@ -136,7 +140,8 @@ def login(username: str, password: str, response: requests.Response) -> Tuple[bo
 
     # Try to log in to the network.
     try:
-        response = requests.post(url, headers={'User-Agent': 'Mozilla/5.0'}, data=data)
+        response = requests.post(
+            url, headers={'User-Agent': 'Mozilla/5.0'}, data=data)
     except requests.exceptions.RequestException:
         logging.error(f'Error in opening url: {url}.')
         return False, None
@@ -202,8 +207,10 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument('-u', '--username', help='Username', default=None)
     parser.add_argument('-p', '--password', help='Password', default=None)
-    parser.add_argument('-r', '--retry_time', help='Seconds to wait before retrying', type=int, default=30)
-    parser.add_argument('-k', '--keepalive_time', help='Seconds to wait between keepalives', type=int, default=60)
+    parser.add_argument(
+        '-r', '--retry_time', help='Seconds to wait before retrying', type=int, default=30)
+    parser.add_argument('-k', '--keepalive_time',
+                        help='Seconds to wait between keepalives', type=int, default=60)
     args = parser.parse_args()
 
     # Get credentials if needed.
@@ -220,7 +227,8 @@ def main() -> None:
         password: str = args.password
 
     # Setup logging.
-    logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', level=logging.INFO)
+    logging.basicConfig(
+        format='%(asctime)s %(levelname)s: %(message)s', level=logging.INFO)
 
     # Setup interrupt handler.
     signal.signal(signal.SIGINT, interrupt_handler)
@@ -232,7 +240,8 @@ def main() -> None:
 
         # If already logged in, wait for a while and retry.
         if status:
-            logging.info(f'Seems to be already logged in. Sleeping for {args.retry_time} seconds.')
+            logging.info(
+                f'Seems to be already logged in. Sleeping for {args.retry_time} seconds.')
             time.sleep(args.retry_time)
             continue
 
@@ -243,7 +252,8 @@ def main() -> None:
 
         response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
         if response.status_code != 200:
-            logging.error('Failed to fetch captive portal webpage. Retrying...')
+            logging.error(
+                'Failed to fetch captive portal webpage. Retrying...')
             continue
         status, response = login(username, password, response)
 
