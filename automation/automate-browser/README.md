@@ -1,4 +1,4 @@
-# Auto-login
+# Automate chrome browser
 
 ## Setup
 ### Chrome driver

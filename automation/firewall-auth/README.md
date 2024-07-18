@@ -1,4 +1,4 @@
-# Create service
+# Create the authentication service for linux systems
 
 ```bash
 sudo mv ~/autologin.service /etc/systemd/system/autologin.service
