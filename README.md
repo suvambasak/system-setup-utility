@@ -1,23 +1,20 @@
-# System Setup Utility Tools
+# System Setup and Utility Tools
 System administrative utility tools and convenience script.
 
-## Table of Contents
-- [System Monitoring](system-monitoring-scripts)
-    - [CPU usage by xOpera](system-monitoring-scripts/cpu)
-    - [Memory usage by xOpera](system-monitoring-scripts/memory)
-- [Shell Scrips](shell-scripts)
-    - [Utility](shell-scripts/utility.md)
-    - [SSH](shell-scripts/ssh.md)
-- [Devices](USB-devide-detector)
-- [Firewall login](autologin)
-    - [Automate browser](autologin/auth-service)
-    - [Start service](autologin/auth-service)
-- [System setup handbook](system-setup)
-    - [Secure Shell](system-setup/secure-shell.md)
-    - [Network File System](system-setup/network-file-system.md)
-    - [Crontab](system-setup/Crontab.md)
-- [Virtualization](virtualization/)
-    - [QEMU/KVM](virtualization/QEMU_KVM.md)
-    - [Docker](virtualization/docker.md)
-- [Install tools](tools-install)
-    - [Savi](tools-install/savi.md)
+## Index
+- [Automation](automation)
+    - [Browser](automation/automate-browser)
+    - [Firewall authenticator](automation/firewall-auth)
+    - [USB device detect](automation/USB-devide-detector)
+
+- [Linux System](linux)
+    - [CLI utilities](linux/cli/utility.md)
+    - [Bash scripts](linux/scripts)
+    - [Setup note](linux/setups)
+        - [Crontab](linux/setups/Crontab.md)
+        - [NFS](linux/setups/network-file-system.md)
+        - [SAVI](linux/setups/savi.md)
+        - [SSH](linux/setups/secure-shell.md)
+        - [Virtualization](linux/setups/virtualization)
+            - [Docker](linux/setups/virtualization/docker.md)
+            - [KVM/QEMU](linux/setups/virtualization/QEMU_KVM.md)
