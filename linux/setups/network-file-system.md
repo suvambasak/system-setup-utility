@@ -1,4 +1,4 @@
-# Network File System
+# Network File System (NFS)
 Server IP is: `SERVER_IP`
 
 Client IP is: `CLIENT_IP`

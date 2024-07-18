@@ -1,4 +1,4 @@
-# Secure Shell
+# Secure Shell Setup
 
 ## Setup
 ### Install SSH server
