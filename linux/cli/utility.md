@@ -38,7 +38,17 @@ du -hs Projects/
 
 
 # Firmware
-How to upgrade device firmware from the command line
+Information about available updates (metadata)
 ```bash
-fwupdmgr update
+sudo fwupdmgr refresh
+```
+
+Check for firmware updates
+```bash
+sudo fwupdmgr get-updates
+```
+
+Install Available Updates
+```bash
+sudo fwupdmgr update
 ```
