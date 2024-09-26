@@ -1,10 +1,18 @@
 # CLI cheatsheet
 
 ## GOTO
-- [FFmpeg](#FFmpeg)
-- [Timeshif](#Timeshif)
-- [Disk](#Disk)
-- [Firmware](#Firmware)
+- [Network printer](#nw-printer)
+- [FFmpeg](#ffmpeg)
+- [Timeshif](#timeshif)
+- [Disk](#disk)
+- [Firmware](#firmware)
+
+----
+# NW printer
+
+```bash
+lp -d KD-304_original -o sides=two-sided-long-edge ~/path/to/paper.pdf
+```
 
 ----
 # FFmpeg
