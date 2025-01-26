@@ -8,6 +8,7 @@ System administrative utility tools and convenience script.
     - [USB device detect](automation/USB-devide-detector)
 
 - [Linux System](linux)
+    - [System setup](linux/system-setup/)
     - [CLI utilities](linux/cli/utility.md)
     - [Bash scripts](linux/scripts)
     - [Setup note](linux/setups)
