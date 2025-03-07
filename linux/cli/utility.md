@@ -1,13 +1,31 @@
 # CLI cheatsheet
 
 ## GOTO
+- [PDF](#pdf)
+- [Image](#image)
 - [Network printer](#nw-printer)
 - [FFmpeg](#ffmpeg)
 - [Timeshif](#timeshif)
 - [Disk](#disk)
 - [Firmware](#firmware)
 
+
 ----
+
+# PDF
+Merge multiple PDF file into one file
+
+```bash
+pdfunite 1.pdf 2.pdf 3.pdf final.pdf
+```
+
+# Image
+Resize image file
+
+```bash
+convert -resize 30% file.jpg new_file.jpg
+```
+
 # NW printer
 
 ```bash
