@@ -23,7 +23,15 @@ for img in *.png; do
     base_name="${img%.png}"
     img2pdf "$img" -o "$base_name.pdf"
     echo "> $img to $base_name.pdf"
-    rm "$img"
+#    rm "$img"
+done
+
+# Loop through all JPG files in the directory and convert them to PDF
+for img in *.jpg; do
+    base_name="${img%.jpg}"
+    img2pdf "$img" -o "$base_name.pdf"
+    echo "> $img to $base_name.pdf"
+#    rm "$img"
 done
 
 echo "Conversion complete."
