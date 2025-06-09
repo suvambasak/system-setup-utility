@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Credentials
-REMOTE_USER="USERNAME"
+REMOTE_USER="suvambasak"
 PASSWORD="YOUR_PASSWD"
 
 
